@@ -1,0 +1,210 @@
+/* Blood Red on Pitch Black Theme */
+$blood-red: #8B0000;
+$blood-red-bright: #FF0000;
+$blood-red-dim: #4A0000;
+$pitch-black: #000000;
+$dark-gray: #1A1A1A;
+$gray: #333333;
+
+Screen {
+    background: $pitch-black;
+    color: $blood-red-bright;
+}
+
+Header {
+    background: $pitch-black;
+    color: $blood-red-bright;
+    text-style: bold;
+    height: 3;
+    dock: top;
+    border-bottom: solid $blood-red-dim;
+}
+
+Header:focus {
+    background: $pitch-black;
+    border-bottom: solid $blood-red;
+}
+
+Footer {
+    background: $pitch-black;
+    color: $blood-red-bright;
+    height: 2;
+    dock: bottom;
+    border-top: solid $blood-red-dim;
+}
+
+Footer .key {
+    color: $blood-red-bright;
+    text-style: bold;
+}
+
+Footer .key:focus {
+    background: $dark-gray;
+    color: $blood-red-bright;
+}
+
+#sidebar {
+    width: 20;
+    height: 1fr;
+    border-right: solid $blood-red-dim;
+    background: $pitch-black;
+}
+
+#note-list {
+    width: 100%;
+    height: 1fr;
+    margin: 1 1;
+    border: solid $blood-red-dim;
+    background: $pitch-black;
+}
+
+#note-list:focus {
+    border: solid $blood-red;
+}
+
+#note-list > ListItem {
+    background: $pitch-black;
+    color: $blood-red-bright;
+    padding: 0 1;
+    border-bottom: solid $gray;
+}
+
+#note-list > ListItem:hover {
+    background: $dark-gray;
+    color: $blood-red-bright;
+}
+
+#note-list > ListItem.--highlight {
+    background: $dark-gray;
+    color: $blood-red-bright;
+    border-left: solid $blood-red-bright;
+}
+
+#editor-panel {
+    width: 1fr;
+    height: 1fr;
+}
+
+#note-editor {
+    width: 100%;
+    height: 1fr;
+    margin: 1 1;
+    border: solid $blood-red-dim;
+    background: $pitch-black;
+    color: $blood-red-bright;
+}
+
+#note-editor:focus {
+    border: solid $blood-red;
+}
+
+#note-editor TextArea {
+    background: $pitch-black;
+    color: $blood-red-bright;
+    border: none;
+}
+
+#note-editor TextArea:focus {
+    background: $pitch-black;
+}
+
+#note-title {
+    height: 3;
+    background: $pitch-black;
+    color: $blood-red-bright;
+    border-bottom: solid $blood-red;
+    padding: 0 2;
+    content-align: left middle;
+    text-style: bold;
+}
+
+#sidebar-title {
+    width: 100%;
+    height: 3;
+    background: $pitch-black;
+    color: $blood-red-bright;
+    text-style: bold;
+    content-align: center middle;
+    border-bottom: solid $blood-red-dim;
+}
+
+#new-note-btn {
+    width: 100%;
+    height: 3;
+    margin: 1 1;
+    background: $pitch-black;
+    color: $blood-red-bright;
+    border: solid $blood-red;
+    text-style: bold;
+}
+
+#new-note-btn:hover {
+    background: $dark-gray;
+    border: solid $blood-red-bright;
+}
+
+#new-note-btn:focus {
+    background: $dark-gray;
+    border: solid $blood-red-bright;
+}
+
+#delete-note-btn {
+    width: 100%;
+    height: 3;
+    margin: 0 1 1 1;
+    background: $pitch-black;
+    color: $blood-red-bright;
+    border: solid $blood-red-dim;
+    text-style: bold;
+}
+
+#delete-note-btn:hover {
+    background: $dark-gray;
+    border: solid $blood-red;
+}
+
+#delete-note-btn:focus {
+    background: $dark-gray;
+    border: solid $blood-red-bright;
+}
+
+#status-bar {
+    height: 1;
+    background: $pitch-black;
+    color: $blood-red-dim;
+    padding: 0 2;
+    content-align: left middle;
+    border-top: solid $gray;
+}
+
+Input {
+    background: $pitch-black;
+    color: $blood-red-bright;
+    border: solid $blood-red-dim;
+}
+
+Input:focus {
+    border: solid $blood-red;
+}
+
+Label {
+    color: $blood-red-bright;
+    padding: 0 1;
+}
+
+Static {
+    color: $blood-red-bright;
+}
+
+Scrollbar {
+    background: $pitch-black;
+    color: $blood-red-dim;
+}
+
+Scrollbar:hover {
+    color: $blood-red;
+}
+
+Scrollbar:focus {
+    color: $blood-red-bright;
+}
