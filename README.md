@@ -4,7 +4,6 @@ Your thoughts. Your notes. Your terminal.
 
 A terminal-based note-taking application with a **blood red on pitch black** theme, built with [Textual](https://textual.textualize.io/).
 
-![Screenshot](screenshot.png)
 
 ## Features
 
