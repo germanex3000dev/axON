@@ -32,11 +32,11 @@ A terminal-based note-taking application with a **blood red on pitch black** the
 
 ```bash
 # Run directly from GitHub
-nix run github:yourusername/axon
+nix run github:germanex3000dev/axON
 ```
 ```bash
 # Build locally
-git clone https://github.com/yourusername/axon
+git clone https://github.com/germanex3000dev/axON
 cd axon
 nix build .#axon
 ./result/bin/axon
@@ -51,7 +51,7 @@ nix develop
 
 ```bash
 # From source
-git clone https://github.com/yourusername/axon
+git clone https://github.com/germanex3000dev/axon
 cd axon
 pip install -e .
 
