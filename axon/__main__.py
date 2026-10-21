@@ -114,7 +114,7 @@ class NoteApp(App):
             return
             
         editor = self.query_one("#note-editor", TextArea)
-        content = editor.text.strip()
+        content = editor.text
         
         if not content:
             self.update_status("Cannot save empty note")
@@ -198,6 +198,11 @@ class NoteApp(App):
         self.query_one("#status-bar", Static).update(message)
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Entry point for the axon console script."""
     app = NoteApp()
     app.run()
+
+
+if __name__ == "__main__":
+    main()
