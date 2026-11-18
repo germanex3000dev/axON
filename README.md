@@ -1,13 +1,12 @@
-# axON - Blood Red Note Taking TUI
+# axON - Note Taking TUI
 
 Your thoughts. Your notes. Your terminal.
 
-A terminal-based note-taking application with a **blood red on pitch black** theme, built with [Textual](https://textual.textualize.io/).
-
+A terminal-based customizable note-taking application, built with [Textual](https://textual.textualize.io/).
 
 ## Features
 
-- **Blood red on pitch black** color scheme - easy on the eyes in dark environments(The real reason is, I like red)
+- **customizable** , change the sidebar, it's colors and make your notes truly yours. Your Notes, your style.
 - **Slim sidebar** (20 chars) for note list with scrollable notes
 - **Full-screen editor** for note content with syntax highlighting ready
 - **Markdown file storage** in `~/notes` - plain text, portable, version-controllable
