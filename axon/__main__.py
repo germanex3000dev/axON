@@ -1,3 +1,4 @@
+import sys
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import (
@@ -8,7 +9,7 @@ from textual.binding import Binding
 from textual.events import Key
 from pathlib import Path
 from datetime import datetime
-
+from axon.config import Config, load_config
 
 notes_dir = Path("~/notes").expanduser()
 notes_dir.mkdir(parents=True, exist_ok=True)
@@ -25,12 +26,22 @@ class NoteApp(App):
         Binding("escape", "cancel_edit", "Cancel"),
         Binding("enter", "select_note", "Open Note"),
     ]
-    
-    def __init__(self):
+
+    def __init__(self, config: Config | None = None):
+        # The configuration has to be stored BEFORE super().__init__(): Textual calls
+        # get_theme_variable_defaults() while building the App's ssstylesheet.
+        self.config = config if config is not None else load_config()
         super().__init__()
         self.current_note_path: Path | None = None
         self.editing = False
-        
+
+    def get_theme_variable_defaults(self) -> dict[str, str]:
+        """Supply the user's colors/layout to the TCSS engine."""
+        return {
+            **super().get_theme_variable_defaults(),
+            **self.config.css_variables(),
+        }
+    
     def get_notes(self) -> list[Path]:
         """Get all markdown notes sorted by modification time (newest first)."""
         notes = [
@@ -200,7 +211,10 @@ class NoteApp(App):
 
 def main() -> None:
     """Entry point for the axon console script."""
-    app = NoteApp()
+    config = load_config()
+    for warning in config.warnings:
+        print(warning, file=sys.stderr)
+    app = NoteApp(config)
     app.run()
 
 
