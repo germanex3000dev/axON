@@ -1,13 +1,12 @@
-# axON - Blood Red Note Taking TUI
+# axON - Note Taking TUI
 
 Your thoughts. Your notes. Your terminal.
 
-A terminal-based note-taking application with a **blood red on pitch black** theme, built with [Textual](https://textual.textualize.io/).
-
+A terminal-based customizable note-taking application, built with [Textual](https://textual.textualize.io/).
 
 ## Features
 
-- **Blood red on pitch black** color scheme - easy on the eyes in dark environments(The real reason is, I like red)
+- **customizable** , change the sidebar, it's colors and make your notes truly yours. Your Notes, your style.
 - **Slim sidebar** (20 chars) for note list with scrollable notes
 - **Full-screen editor** for note content with syntax highlighting ready
 - **Markdown file storage** in `~/notes` - plain text, portable, version-controllable
@@ -89,7 +88,8 @@ axon/
 ├── axon/
 │   ├── __init__.py    # Package init
 │   ├── __main__.py    # Main application entry point
-│   └── app.tcss       # Textual CSS theme (blood red on black)
+│   ├── config.py      # User configuration loaders (colors, sidebar width)
+│   └── app.tcss       # Textual CSS theme (which uses ax-* variables)
 ```
 
 ## Notes Storage
@@ -99,6 +99,32 @@ Notes are stored as `.md` files in `~/notes/`:
 - Filenames are timestamp-based: `YYYYMMDD-HHMMSS-title.md`
 - First line of content becomes the title (sanitized)
 - Fully compatible with any markdown editor
+
+Colors and sidebar width are configurable via `~/.config/axon/config.toml`
+(or `$XDG_CONFIG_HOME/axon/config.toml`; the `AXON_CONFIG` environment
+variable overrides the location). All keys are optional, anything omitted
+falls back to the defaults, which is the iconic blood-red.
+
+Example config here ; 
+
+```toml
+# ~/.config/axon/config.toml
+
+[colors]
+background = "#000000"   # panel/screen background
+text       = "#FF0000"   # primary text (blood red bright)
+accent     = "#8B0000"   # focused borders (blood red)
+dim        = "#4A0000"   # idle borders, status text, scrollbar
+highlight  = "#1A1A1A"   # selected/hover list item background
+gray       = "#333333"   # separator lines
+
+[ui]
+sidebar_width = 20       # sidebar width in characters (8-60)
+```
+
+Colors accept anything Textual understands: hex (#RRGGBB, #RGB),
+rgb(r, g, b), or named colors (red). Invalid values print a warning
+to stderr and fall back to the default for that key.
 
 ## Theme Colors
 
@@ -167,6 +193,22 @@ First working version with the signature aesthetic and note operations:
 - **Keyboard bindings**: Full Textual binding system with footer hints
 - **Visual feedback**: Hover states, focus borders, highlighted selection
 
+### Latest(major) 18.11.2026, 17:55: TOML configuration support
+
+Replaced the hardcoded blood-red palette with user configuration:
+
+- **New `axon/config.py`** - loads `~/.config/axon/config.toml` (XDG-aware,
+  `AXON_CONFIG` overrides), validates values, falls back to defaults
+- **`app.tcss` de-hardcoded** - removed the 6 `$var: #hex` definitions;
+  all rules now reference `$ax-*` variables supplied at startup
+- **Semantic variable names** - `$blood-red` → `$ax-accent`,
+  `$pitch-black` → `$ax-background`, etc. (`ax-` prefix avoids collisions
+  with Textual's built-in theme variables, which would override app values)
+- **Configurable sidebar width** - `width: 20` → `width: $ax-sidebar-width` (8-60)
+- **Graceful degradation** - invalid colors/sizes warn on stderr and fall
+  back per-key; missing config file is silent
+- Added `tomli` fallback dependency for Python 3.10 (3.11+ uses stdlib `tomllib`) (holy bloat)
+
 ## Roadmap
 
 - [x] Basic TUI setup with textual
@@ -177,9 +219,10 @@ First working version with the signature aesthetic and note operations:
 - [x] Complete Nix flake (build, run, dev shell)
 - [x] Slim sidebar with editor-focused layout
 - [x] Pure pitch black backgrounds with red borders
+- [x] Configurable colors and sidebar size (config.toml)
 - [ ] Search notes by name and content
 - [ ] Support configurable notes directories
-- [ ] Add basic configuration options (theme, keybindings)
+- [ ] Add basic configuration options for keybindings
 - [ ] Introduce task management and project organization
 - [ ] Expand into an all-in-one terminal productivity tool
 

@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "textual>=0.50.0",
+    "tomli>=2.0; python_version < '3.11'",
 ]
 
 [project.scripts]
