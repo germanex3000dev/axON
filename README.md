@@ -1,4 +1,4 @@
-# axON - Note Taking TUI
+# axON -   A customizable note Taking TUI
 
 Your thoughts. Your notes. Your terminal.
 
