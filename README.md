@@ -4,6 +4,10 @@ Your thoughts. Your notes. Your terminal.
 
 A terminal-based customizable note-taking application, built with [Textual](https://textual.textualize.io/).
 
+Many thanks to gretagen ZETA, the midas of technology, for contributing to my project!!! I feel honored by receiving support from such a great person
+
+Go check him out too: [gretagen](https://github.com/gretagen)
+
 ## Features
 
 - **customizable** , change the sidebar, it's colors and make your notes truly yours. Your Notes, your style.
